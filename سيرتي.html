@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خباب عبداللطيف - مدونة السيرة الذاتية</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+            --text-light: #7f8c8d;
+            --bg: #f9f9f9;
+            --card-bg: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg); color: var(--text); line-height: 1.6; padding-top: 80px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 60px 0; }
+        h1,h2,h3,h4 { color: var(--primary); margin-bottom: 20px; }
+        p { margin-bottom: 15px; }
+        
+        /* شريط التنقل المحسن */
+        nav { 
+            background-color: var(--primary); 
+            color: white; 
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            z-index: 1000; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 20px; 
+        }
+        
+        .logo { 
+            font-size: 1.5rem; 
+            font-weight: bold; 
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 10px;
+            color: var(--secondary);
+        }
+        
+        .nav-links { 
+            display: flex; 
+            list-style: none; 
+        }
+        
+        .nav-links li { 
+            margin-left: 20px; 
+            position: relative;
+        }
+        
+        .nav-links a { 
+            color: white; 
+            text-decoration: none; 
+            transition: color 0.3s; 
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links a:hover { 
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--secondary); 
+        }
+        
+        .nav-links a.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .nav-links a i { 
+            margin-left: 8px; 
+            font-size: 0.9rem;
+        }
+        
+        .menu-toggle { 
+            display: none; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+        }
+        
+        /* رأس المدونة */
+        .blog-header { 
+            background: linear-gradient(135deg, var(--primary), var(--secondary)); 
+            color: white; 
+            padding: 100px 0 60px; 
+            text-align: center; 
+            margin-bottom: 40px; 
+        }
+        
+        .author-info { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+        }
+        
+        .author-img { 
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; 
+            border: 5px solid white; 
+            margin-bottom: 20px; 
+            background-color: #ddd; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-size: 60px; 
+            color: var(--primary); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        overflow: hidden; 
+                     }
+    
+    
+    .author-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+                     }
+        
+        .author-details h1 { 
+            color: white; 
+            font-size: 2.2rem; 
+            margin-bottom: 10px; 
+        }
+        
+        .author-title { 
+            font-size: 1.3rem; 
+            margin-bottom: 20px; 
+            opacity: 0.9; 
+        }
+        
+        .author-contact { 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 15px; 
+            margin-top: 20px; 
+        }
+        
+        .contact-badge { 
+            display: flex; 
+            align-items: center; 
+            background: rgba(255,255,255,0.2); 
+            padding: 8px 15px; 
+            border-radius: 30px; 
+            font-size: 0.9rem; 
+            transition: transform 0.3s;
+        }
+        
+        .contact-badge:hover {
+            transform: translateY(-3px);
+            background: rgba(255,255,255,0.3);
+        }
+        
+        /* محتوى الأقسام المخفي افتراضياً */
+        .section-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .section-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .blog-layout { 
+            display: grid; 
+            grid-template-columns: 1fr 300px; 
+            gap: 40px; 
+            min-height: 500px;
+        }
+        
+        .blog-card { 
+            background: var(--card-bg); 
+            border-radius: 10px; 
+            box-shadow: var(--shadow); 
+            overflow: hidden; 
+            margin-bottom: 30px; 
+            transition: transform 0.3s; 
+        }
+        
+        .blog-card:hover { 
+            transform: translateY(-5px); 
+        }
+        
+        .card-header { 
+            background: var(--secondary); 
+            color: white; 
+            padding: 20px; 
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-header i {
+            margin-left: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .card-body { 
+            padding: 25px; 
+        }
+        
+        .sidebar { 
+            position: sticky; 
+            top: 100px; 
+        }
+        
+        .sidebar-widget { 
+            background: var(--card-bg); 
+            border-radius: 10px; 
+            box-shadow: var(--shadow); 
+            padding: 25px; 
+            margin-bottom: 30px; 
+        }
+        
+        .widget-title { 
+            color: var(--secondary); 
+            border-bottom: 2px solid var(--light); 
+            padding-bottom: 10px; 
+            margin-bottom: 20px; 
+            font-size: 1.2rem; 
+            display: flex;
+            align-items: center;
+        }
+        
+        .widget-title i {
+            margin-left: 10px;
+        }
+        
+        .toc-list { 
+            list-style: none; 
+        }
+        
+        .toc-list li { 
+            margin-bottom: 10px; 
+        }
+        
+        .toc-list a { 
+            color: var(--text); 
+            text-decoration: none; 
+            transition: color 0.3s; 
+            display: flex; 
+            align-items: center; 
+            padding: 8px 0;
+            border-radius: 4px;
+        }
+        
+        .toc-list a:hover { 
+            color: var(--secondary); 
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .toc-list a i { 
+            margin-left: 10px; 
+            color: var(--secondary); 
+        }
+        
+        .skill-item { 
+            margin-bottom: 20px; 
+        }
+        
+        .skill-info { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 5px; 
+        }
+        
+        .skill-bar { 
+            height: 8px; 
+            background-color: #e0e0e0; 
+            border-radius: 4px; 
+            overflow: hidden; 
+        }
+        
+        .skill-level { 
+            height: 100%; 
+            background: linear-gradient(90deg, var(--secondary), var(--accent)); 
+            border-radius: 4px; 
+        }
+        
+        .data-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 20px 0; 
+        }
+        
+        .data-table th, .data-table td { 
+            padding: 12px 15px; 
+            text-align: right; 
+            border-bottom: 1px solid #e0e0e0; 
+        }
+        
+        .data-table th { 
+            background-color: var(--light); 
+            color: var(--primary); 
+            font-weight: 600; 
+        }
+        
+        .data-table tr:hover { 
+            background-color: #f5f5f5; 
+        }
+        
+        .grid-cards { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+            gap: 25px; 
+        }
+        
+        .grid-card { 
+            background: var(--card-bg); 
+            border-radius: 10px; 
+            box-shadow: var(--shadow); 
+            padding: 20px; 
+            transition: transform 0.3s; 
+        }
+        
+        .grid-card:hover { 
+            transform: translateY(-5px); 
+        }
+        
+        .grid-card i { 
+            font-size: 2rem; 
+            color: var(--secondary); 
+            margin-bottom: 15px; 
+        }
+        
+        /* رسالة الترحيب */
+        .welcome-message {
+            text-align: center;
+            padding: 60px 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        
+        .welcome-message i {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+        
+        .welcome-message h2 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .welcome-message p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 25px;
+            color: var(--text-light);
+        }
+        
+        /* التذييل المحسن */
+        footer { 
+            background-color: var(--primary); 
+            color: white; 
+            padding: 50px 0 30px; 
+            margin-top: 50px; 
+        }
+        
+        .footer-content { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 30px; 
+            margin-bottom: 30px; 
+        }
+        
+        .footer-section h3 { 
+            color: white; 
+            margin-bottom: 20px; 
+            font-size: 1.3rem; 
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-section h3 i {
+            margin-left: 10px;
+            color: var(--secondary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .footer-links a i {
+            margin-left: 8px;
+            font-size: 0.9rem;
+        }
+        
+        .social-links { 
+            display: flex; 
+            gap: 15px; 
+            margin-top: 20px;
+        }
+        
+        .social-link { 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 40px; 
+            height: 40px; 
+            background: rgba(255,255,255,0.1); 
+            border-radius: 50%; 
+            color: white; 
+            text-decoration: none; 
+            transition: background 0.3s; 
+        }
+        
+        .social-link:hover { 
+            background: var(--secondary); 
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom { 
+            text-align: center; 
+            padding-top: 20px; 
+            border-top: 1px solid rgba(255,255,255,0.1); 
+        }
+        
+        @media (max-width: 992px) { 
+            .blog-layout { 
+                grid-template-columns: 1fr; 
+            } 
+            .sidebar { 
+                position: static; 
+            } 
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links { 
+                display: none; 
+                position: absolute; 
+                top: 70px; 
+                left: 0; 
+                width: 100%; 
+                background: var(--primary); 
+                flex-direction: column; 
+                padding: 20px; 
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1); 
+            }
+            
+            .nav-links.active { 
+                display: flex; 
+            }
+            
+            .nav-links li { 
+                margin: 10px 0; 
+            }
+            
+            .menu-toggle { 
+                display: block; 
+            }
+            
+            .author-contact { 
+                flex-direction: column; 
+                align-items: center; 
+            }
+            
+            .grid-cards { 
+                grid-template-columns: 1fr; 
+            }
+        }
+        
+        .btn { 
+            display: inline-block; 
+            background: var(--secondary); 
+            color: white; 
+            padding: 10px 20px; 
+            border-radius: 5px; 
+            text-decoration: none; 
+            font-weight: 500; 
+            transition: background 0.3s; 
+            border: none; 
+            cursor: pointer; 
+        }
+        
+        .btn:hover { 
+            background: var(--primary); 
+        }
+        
+        .btn-outline { 
+            background: transparent; 
+            border: 2px solid var(--secondary); 
+            color: var(--secondary); 
+        }
+        
+        .btn-outline:hover { 
+            background: var(--secondary); 
+            color: white; 
+        }
+        
+        .tag { 
+            display: inline-block; 
+            background: var(--light); 
+            color: var(--primary); 
+            padding: 5px 10px; 
+            border-radius: 20px; 
+            font-size: 0.8rem; 
+            margin-left: 5px; 
+            margin-bottom: 5px; 
+        }
+        
+        html { 
+            scroll-behavior: smooth; 
+        }
+        
+        section {
+            scroll-margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <!-- شريط التنقل -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo"><i class="fas fa-user-tie"></i> خباب عبداللطيف</div>
+            <ul class="nav-links">
+                <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> حولي</a></li>
+               
+                <li><a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i> المؤهلات</a></li>
+                <li><a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> الخبرات</a></li>
+                <li><a href="#skills" class="nav-link"><i class="fas fa-tools"></i> المهارات</a></li>
+                <li><a href="#courses" class="nav-link"><i class="fas fa-certificate"></i> الدورات</a></li>
+                 <li><a href="#skill" class="nav-link"><i class="fas fa-language"></i> اللغات</a></li>
+                  <li><a href="#الاهتمامات" class="nav-link"><i class="fas fa-heart"></i> الاهتمامات</a></li>
+                <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> التواصل</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </nav>
+
+    <!-- رأس المدونة -->
+    <header class="blog-header">
+        <div class="container">
+            <div class="author-info">
+            <div
+class="author-img"><img src="profile.png"></div>
+                <div class="author-details">
+                    <h1>خباب عبداللطيف محمد عبدالله</h1>
+                    <div class="author-title">محاسب حديث التخرج - طموح ومتعلم مستمر</div>
+                    <div class="author-contact">
+                        <div class="contact-badge"><i class="fas fa-phone"></i> 773765326</div>
+                        <div class="contact-badge"><i class="fas fa-envelope"></i> al.khbab77@gmail.com</div>
+                        <div class="contact-badge"><i class="fas fa-map-marker-alt"></i> اليمن/صغاء/شارع حدة</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- محتوى المدونة -->
+    <div class="container blog-layout">
+        <main class="blog-main">
+            <!-- رسالة الترحيب الافتراضية -->
+            <div class="welcome-message" id="welcome">
+                <i class="fas fa-handshake"></i>
+                <h2>مرحباً بكم في سيرتي الذاتية</h2>
+                <p>أنا خباب عبداللطيف، محاسب حديث التخرج من جامعة صنعاء. استخدم الروابط أعلاه للتنقل بين أقسام سيرتي الذاتية أو استعرض المحتوى من الشريط الجانبي.</p>
+                <a href="#about" class="btn"><i class="fas fa-user"></i> ابدأ التعرف عليّ</a>
+            </div>
+
+            <!-- قسم حولي -->
+            <section id="about" class="section-content">
+                <div class="blog-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-user"></i> حولي</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>محاسب طموح وحديث التخرج من جامعة صنعاء بتقدير (جيد جداً)، أتمتع بمهارات جيدة في استخدام الأدوات المحاسبية والمالية، مع شغف بتطوير الذات عبر التعلم المستمر.</p>
+                        <p>أمتلك خبرة عملية من خلال التدريب والبرامج التطبيقية في مجال المحاسبة، منها التدقيق، وإدارة المشاريع، بالإضافة إلى مهارات متقدمة في استخدام برامج التحليل المالي وأدوات الذكاء الاصطناعي المساعدة على اتخاذ القرارات.</p>
+                        <p>أسعى لترك بصمة مميزة في بيئة عمل احترافية عبر الجمع بين المعرفة الأكاديمية والمهارات التقنية الحديثة.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم المؤهلات العلمية -->
+            <section id="education" class="section-content">
+                <div class="blog-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-graduation-cap"></i> المؤهلات العلمية</h2>
+                    </div>
+                    <div class="card-body">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>اسم الشهادة</th>
+                                    <th>مكان الدراسة</th>
+                                    <th>تاريخ التخرج</th>
+                                    <th>التقدير</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>بكالوريوس محاسبة</td>
+                                    <td>جامعة صنعاء</td>
+                                    <td>2025-6-21</td>
+                                    <td>جيد جداً</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم الخبرات -->
+            <section id="experience" class="section-content">
+                <div class="blog-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-briefcase"></i> الخبرات</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid-cards">
+                            <!-- خبرة 1 -->
+                            <div class="grid-card">
+                                <h3>تدريب على نظام المحاسبة (أونيكس برو)</h3>
+                                <p><strong>المكان:</strong> جامعة صنعاء</p>
+                                <p><strong>الفترة:</strong> 2023-12-10 إلى 2025-2-2</p>
+                                <p><strong>التفاصيل:</strong> تدريب عملي على برنامج أونيكس برو المحاسبي، مع القدرة على إعداد التقارير المالية بدقة.</p>
+                            </div>
+
+                            <!-- خبرة 2 -->
+                            <div class="grid-card">
+                                <h3>التدقيق الداخلي وإدارة المخاطر</h3>
+                                <p><strong>المكان:</strong> عن بعد ضمن أنشطة الجمعية اليمنية للتدقيق الداخلي</p>
+                                <p><strong>الفترة:</strong> 2025-3-9 إلى 2025-3-29</p>
+                                <p><strong>التفاصيل:</strong> اكتساب خبرة من خلال الدورات في التدقيق الداخلي وإدارة المخاطر وإعداد تقارير التدقيق الداخلي.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم المهارات -->
+            <section id="skills" class="section-content">
+                <div class="blog-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-tools"></i> المهارات</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid-cards">
+                            <div class="grid-card">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                                <h3>المهارات المحاسبية</h3>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>إعداد التقارير المالية</span>
+                                        <span>متوسط</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>التدقيق الداخلي وإدارة المخاطر</span>
+                                        <span>متوسط</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>جداول اكسل والتحليل المالي</span>
+                                        <span>خبير</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid-card">
+                                <i class="fas fa-laptop-code"></i>
+                                <h3>المهارات التقنية</h3>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>أدوات الذكاء الاصطناعي</span>
+                                        <span>متوسط</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>Power BI وأدوات التصور</span>
+                                        <span>متوسط</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 70%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>أنظمة ERP</span>
+                                        <span>خبير</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="grid-card">
+                                <i class="fas fa-users"></i>
+                                <h3>المهارات الشخصية</h3>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>العمل الجماعي</span>
+                                        <span>خبير</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>التفكير الإبداعي</span>
+                                        <span>خبير</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span>التواصل الفعال</span>
+                                        <span>خبير</span>
+                                    </div>
+                                    <div class="skill-bar">
+                                        <div class="skill-level" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- قسم الدورات -->
+            <section id="courses" class="section-content">
+                <div class="blog-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-certificate"></i> الدورات التدريبية</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="grid-cards">
+                            <div class="grid-card">
+                                <h3>محاسبة ومالية</h3>
+                                <ul>
+                                    <li>أونيكس برو - جامعة صنعاء</li>
+                                    <li>إعداد التقارير المالية الخارجية CAM</li>
+                                    <li>دورة أساسيات المحاسبة</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="grid-card">
+                                <h3>تدقيق وإدارة مخاطر</h3>
+                                <ul>
+                                    <li>التدقيق الشرعي في المؤسسات المالية الإسلامية</li>
+                                    <li>إدارة المخاطر</li>
+                                    <li>فن إعداد تقارير التدقيق الداخلي</li>
+                                    <li>دورة معايير التدقيق الداخلي</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="grid-card">
+                                <h3>تكنولوجيا وتحليل بيانات</h3>
+                                <ul>
+                                    <li>الرخصة الدولية لقيادة الحاسوب</li>
+                                    <li>تحليل البيانات باستخدام Power BI و Excel</li>
+                                    <li>مقدمة في أدوات الذكاء الاصطناعي</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="grid-card">
+                                <h3>إدارة ومهارات متقدمة</h3>
+                                <ul>
+                                    <li>دبلوم إدارة الأعمال الحديثة</li>
+                                    <li>دبلوم إدارة المشاريع الاحترافي PMP</li>
+                                    <li>برنامج مكافحة غسيل الأموال وتمويل الإرهاب</li>
+                                    <li>مهارة كشف تزييف العملات وتزوير المستندات</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+             <!-- قسم اللغات -->
+             <section id="skill" class="section-content">
+                  <div class="sidebar-widget">
+                <h3 class="widget-title"><i class="fas fa-language"></i> اللغات</h3>
+                <div class="skill-item">
+                    <div class="skill-info"><span>العربية</span><span>اللغة الأم</span></div>
+                    <div class="skill-bar"><div class="skill-level" style="width:100%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>الإنجليزية</span><span>متوسط</span></div>
+                    <div class="skill-bar"><div class="skill-level" style="width:70%"></div></div>
+                </div>
+            </div>
+            </section>
+                  <!-- قسم الاهتمامات -->
+             <section id="الاهتمامات" class="section-content">
+                  <div class="sidebar-widget">
+                <h3 class="widget-title"><i class="fas fa-heart"></i> الاهتمامات</h3>
+                <div class="tags">
+                    <span class="tag">الذكاء الاصطناعي</span>
+                    <span class="tag">تطوير الذات</span>
+                    <span class="tag">القراءة</span>
+                    <span class="tag">الرياضة</span>
+                    <span class="tag">التعلم المستمر</span>
+                </div>
+            </div>
+             </section>
+        </main>
+
+        <!-- الشريط الجانبي -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3 class="widget-title"><i class="fas fa-compass"></i> تصفح السيرة</h3>
+                <ul class="toc-list">
+                    <li><a href="#about" class="sidebar-link"><i class="fas fa-chevron-left"></i> حولي</a></li>
+                    <li><a href="#education" class="sidebar-link"><i class="fas fa-chevron-left"></i> المؤهلات العلمية</a></li>
+                    <li><a href="#experience" class="sidebar-link"><i class="fas fa-chevron-left"></i> الخبرات</a></li>
+                    <li><a href="#skills" class="sidebar-link"><i class="fas fa-chevron-left"></i> المهارات</a></li>
+                    <li><a href="#courses" class="sidebar-link"><i class="fas fa-chevron-left"></i> الدورات التدريبية</a></li>
+               <li><a href="#skill" class="sidebar-link"><i class="fas fa-chevron-left"></i> اللغات</a></li>
+                  <li><a href="#الاهتمامات" class="sidebar-link"><i class="fas fa-chevron-left"></i> الاهتمامات</a></li>
+                </ul>
+            </div>
+          
+            <div class="sidebar-widget">
+                <h3 class="widget-title"><i class="fas fa-download"></i> تحميل السيرة الذاتية</h3>
+                <p>يمكنك تحميل نسخة PDF من سيرتي الذاتية</p>
+                <a href="#" class="btn" style="width:100%; text-align:center; margin-top:15px;"><i class="fas fa-download"></i> تحميل السيرة الذاتية</a>
+            </div>
+        </aside>
+    </div>
+
+    <!-- التذييل -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-user-tie"></i> خباب عبداللطيف</h3>
+                    <p>محاسب طموح وحديث التخرج، أسعى لتطوير مهاراتي والمساهمة في بيئة عمل احترافية.</p>
+                    <div class="social-links">
+                        <a href="tel:773765326" class="social-link"><i class="fas fa-phone"></i></a>
+                        <a href="mailto:al.khbab77@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                        <a
+href="https://www.linkedin.com/in/khbab-al-sama-i-857863386?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
+  class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://x.com/Mr_khbab?t=PZxYUNUDqvZnNqpZaV6fiw&s=09" class="social-link"><i class="fab fa-twitter"></i></a>
+                         <a href="https://www.facebook.com/profile.php?id=100076870698988" class="social-link"><i class="fab fa-facebook"></i></a>
+                          <a href="https://wa.me/967773765326?" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-address-card"></i> معلومات الاتصال</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> اليمن/صغاء/شارع حدة - جوار مستشفى جامعة الحضارة</p>
+                    <p><i class="fas fa-phone"></i> 773765326</p>
+                    <p><i class="fas fa-envelope"></i> al.khbab77@gmail.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-link"></i> روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about"><i class="fas fa-chevron-left"></i> حولي</a></li>
+                        <li><a href="#education"><i class="fas fa-chevron-left"></i> المؤهلات</a></li>
+                        <li><a href="#experience"><i class="fas fa-chevron-left"></i> الخبرات</a></li>
+                        <li><a href="#skills"><i class="fas fa-chevron-left"></i> المهارات</a></li>
+                        <li><a href="#courses"><i class="fas fa-chevron-left"></i> الدورات التدريبية</a></li>
+                    <li><a href="#skill" class="sidebar-link"><i class="fas fa-chevron-left"></i> اللغات</a></li>
+                  <li><a href="#الاهتمامات" class="sidebar-link"><i class="fas fa-chevron-left"></i> الاهتمامات</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 خباب عبداللطيف. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+   <script>
+    // تفعيل القائمة المتنقلة
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+        document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // إظهار القسم المطلوب وإخفاء باقي الأقسام
+    function showSection(sectionId) {
+        // إخفاء رسالة الترحيب
+        document.getElementById('welcome').style.display = 'none';
+        
+        // إخفاء جميع الأقسام
+        const allSections = document.querySelectorAll('.section-content');
+        allSections.forEach(section => section.classList.remove('active'));
+        
+        // إظهار القسم المطلوب
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+            targetSection.classList.add('active');
+            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); // الانتقال السلس
+        }
+        
+        // تحديث حالة الروابط النشطة
+        const allLinks = document.querySelectorAll('.nav-link, .sidebar-link, .footer-links a');
+        allLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + sectionId) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // إضافة أحداث النقر لجميع روابط التنقل
+    document.querySelectorAll('.nav-link, .sidebar-link, .footer-links a').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            showSection(targetId);
+
+            // إغلاق القائمة المتنقلة إذا كانت مفتوحة (للهاتف)
+            const navLinks = document.querySelector('.nav-links');
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+            }
+        });
+    });
+
+    // عرض رسالة الترحيب عند فتح الصفحة
+    window.addEventListener('load', function() {
+        // إخفاء جميع الأقسام
+        const allSections = document.querySelectorAll('.section-content');
+        allSections.forEach(section => section.classList.remove('active'));
+
+        // إظهار رسالة الترحيب
+        document.getElementById('welcome').style.display = 'block';
+    });
+</script>
+</body>
+</html>
