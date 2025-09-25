@@ -1002,62 +1002,339 @@ href="https://www.linkedin.com/in/khbab-al-sama-i-857863386?utm_source=share&utm
         </div>
     </footer>
 
-   <script>
-    // تفعيل القائمة المتنقلة
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-        document.querySelector('.nav-links').classList.toggle('active');
-    });
+     <script>
+        // بيانات الترجمة
+        const translations = {
+            ar: {
+                // Navigation and General
+                "name": "خباب عبداللطيف",
+                "about": "حولي",
+                "education": "المؤهلات",
+                "experience": "الخبرات",
+                "skills": "المهارات",
+                "courses": "الدورات",
+                "languages": "اللغات",
+                "interests": "الاهتمامات",
+                "contact": "التواصل",
+                "fullname": "خباب عبداللطيف محمد عبدالله",
+                "title": "محاسب حديث التخرج - طموح ومتعلم مستمر",
+                "address": "اليمن/صغاء/شارع حدة",
+                
+                // Welcome Section
+                "welcome_title": "مرحباً بكم في سيرتي الذاتية",
+                "welcome_text": "أنا خباب عبداللطيف، محاسب حديث التخرج من جامعة صنعاء. استخدم الروابط أعلاه للتنقل بين أقسام سيرتي الذاتية أو استعرض المحتوى من الشريط الجانبي.",
+                "start_btn": "ابدأ التعرف عليّ",
+                
+                // About Section
+                "about_text1": "محاسب طموح وحديث التخرج من جامعة صنعاء بتقدير (جيد جداً)، أتمتع بمهارات جيدة في استخدام الأدوات المحاسبية والمالية، مع شغف بتطوير الذات عبر التعلم المستمر.",
+                "about_text2": "أمتلك خبرة عملية من خلال التدريب والبرامج التطبيقية في مجال المحاسبة، منها التدقيق، وإدارة المشاريع، بالإضافة إلى مهارات متقدمة في استخدام برامج التحليل المالي وأدوات الذكاء الاصطناعي المساعدة على اتخاذ القرارات.",
+                "about_text3": "أسعى لترك بصمة مميزة في بيئة عمل احترافية عبر الجمع بين المعرفة الأكاديمية والمهارات التقنية الحديثة.",
+                
+                // Education Section
+                "degree": "اسم الشهادة",
+                "institution": "مكان الدراسة",
+                "graduation_date": "تاريخ التخرج",
+                "grade": "التقدير",
+                "accounting_degree": "بكالوريوس محاسبة",
+                "sanaa_university": "جامعة صنعاء",
+                "very_good": "جيد جداً",
+                
+                // Experience Section
+                "location": "المكان",
+                "period": "الفترة",
+                "to": "إلى",
+                "details": "التفاصيل",
+                "exp1_title": "تدريب على نظام المحاسبة (أونيكس برو)",
+                "exp1_details": "تدريب عملي على برنامج أونيكس برو المحاسبي، مع القدرة على إعداد التقارير المالية بدقة.",
+                "exp2_title": "التدقيق الداخلي وإدارة المخاطر",
+                "exp2_location": "عن بعد ضمن أنشطة الجمعية اليمنية للتدقيق الداخلي",
+                "exp2_details": "اكتساب خبرة من خلال الدورات في التدقيق الداخلي وإدارة المخاطر وإعداد تقارير التدقيق الداخلي.",
+                
+                // Skills Section
+                "accounting_skills": "المهارات المحاسبية",
+                "technical_skills": "المهارات التقنية",
+                "personal_skills": "المهارات الشخصية",
+                "financial_reports": "إعداد التقارير المالية",
+                "internal_audit": "التدقيق الداخلي وإدارة المخاطر",
+                "excel_analysis": "جداول اكسل والتحليل المالي",
+                "ai_tools": "أدوات الذكاء الاصطناعي",
+                "power_bi": "Power BI وأدوات التصور",
+                "erp_systems": "أنظمة ERP",
+                "teamwork": "العمل الجماعي",
+                "creative_thinking": "التفكير الإبداعي",
+                "effective_communication": "التواصل الفعال",
+                "intermediate": "متوسط",
+                "expert": "خبير",
+                
+                // Courses Section
+                "accounting_finance": "محاسبة ومالية",
+                "audit_risk": "تدقيق وإدارة مخاطر",
+                "tech_data": "تكنولوجيا وتحليل بيانات",
+                "management_skills": "إدارة ومهارات متقدمة",
+                "course1": "أونيكس برو - جامعة صنعاء",
+                "course2": "إعداد التقارير المالية الخارجية CAM",
+                "course3": "دورة أساسيات المحاسبة",
+                "course4": "التدقيق الشرعي في المؤسسات المالية الإسلامية",
+                "course5": "إدارة المخاطر",
+                "course6": "فن إعداد تقارير التدقيق الداخلي",
+                "course7": "دورة معايير التدقيق الداخلي",
+                "course8": "الرخصة الدولية لقيادة الحاسوب",
+                "course9": "تحليل البيانات باستخدام Power BI و Excel",
+                "course10": "مقدمة في أدوات الذكاء الاصطناعي",
+                "course11": "دبلوم إدارة الأعمال الحديثة",
+                "course12": "دبلوم إدارة المشاريع الاحترافي PMP",
+                "course13": "برنامج مكافحة غسيل الأموال وتمويل الإرهاب",
+                "course14": "مهارة كشف تزييف العملات وتزوير المستندات",
+                
+                // Languages Section
+                "arabic": "العربية",
+                "english": "الإنجليزية",
+                "native": "اللغة الأم",
+                
+                // Interests Section
+                "reading": "القراءة",
+                "reading_desc": "قراءة الكتب والمقالات في مجال المحاسبة والمالية والتكنولوجيا.",
+                "financial_analysis": "التحليل المالي",
+                "financial_analysis_desc": "تحليل البيانات المالية والاقتصادية باستخدام أدوات متقدمة.",
+                "ai_research": "الذكاء الاصطناعي",
+                "ai_research_desc": "البحث في تطبيقات الذكاء الاصطناعي في مجال المحاسبة والمالية.",
+                
+                // Contact Section
+                "contact_info": "معلومات التواصل",
+                "social_media": "وسائل التواصل الاجتماعي",
+                "download_pdf": "تحميل السيرة الذاتية (PDF)",
+                "print_cv": "طباعة السيرة الذاتية",
+                
+                // Sidebar
+                "quick_nav": "روابط سريعة",
+                "key_skills": "المهارات الرئيسية",
+                "download_cv": "تحميل السيرة الذاتية",
+                "download_text": "يمكنك تحميل نسخة من سيرتي الذاتية بصيغة PDF للاطلاع عليها في أي وقت.",
+                
+                // Footer
+                "footer_desc": "محاسب حديث التخرج طموح، متحمس لتطبيق مهاراتي المحاسبية والتقنية في بيئة عمل احترافية.",
+                "quick_links": "روابط سريعة",
+                "copyright": "2025 جميع الحقوق محفوظة | خباب عبداللطيف"
+            },
+            en: {
+                // Navigation and General
+                "name": "Khbab Abdulatif",
+                "about": "About Me",
+                "education": "Education",
+                "experience": "Experience",
+                "skills": "Skills",
+                "courses": "Courses",
+                "languages": "Languages",
+                "interests": "Interests",
+                "contact": "Contact",
+                "fullname": "Khbab Abdulatif Mohammed Abdullah",
+                "title": "Recent Accounting Graduate - Ambitious and Continuous Learner",
+                "address": "Yemen/Saghar/Hadda Street",
+                
+                // Welcome Section
+                "welcome_title": "Welcome to My CV",
+                "welcome_text": "I'm Khbab Abdulatif, a recent accounting graduate from Sana'a University. Use the links above to navigate through my CV sections or browse content from the sidebar.",
+                "start_btn": "Get to Know Me",
+                
+                // About Section
+                "about_text1": "An ambitious recent accounting graduate from Sana'a University with a 'Very Good' rating, possessing strong skills in using accounting and financial tools, with a passion for self-development through continuous learning.",
+                "about_text2": "I have practical experience through training and applied programs in accounting, including auditing, project management, in addition to advanced skills in using financial analysis software and AI tools to assist in decision-making.",
+                "about_text3": "I strive to leave a distinctive mark in a professional work environment by combining academic knowledge with modern technical skills.",
+                
+                // Education Section
+                "degree": "Degree",
+                "institution": "Institution",
+                "graduation_date": "Graduation Date",
+                "grade": "Grade",
+                "accounting_degree": "Bachelor of Accounting",
+                "sanaa_university": "Sana'a University",
+                "very_good": "Very Good",
+                
+                // Experience Section
+                "location": "Location",
+                "period": "Period",
+                "to": "to",
+                "details": "Details",
+                "exp1_title": "Accounting System Training (Onyx Pro)",
+                "exp1_details": "Practical training on the Onyx Pro accounting program, with the ability to prepare financial reports accurately.",
+                "exp2_title": "Internal Audit and Risk Management",
+                "exp2_location": "Remotely through activities of the Yemeni Association of Internal Auditors",
+                "exp2_details": "Gaining experience through courses in internal auditing, risk management, and preparing internal audit reports.",
+                
+                // Skills Section
+                "accounting_skills": "Accounting Skills",
+                "technical_skills": "Technical Skills",
+                "personal_skills": "Personal Skills",
+                "financial_reports": "Financial Reporting",
+                "internal_audit": "Internal Audit and Risk Management",
+                "excel_analysis": "Excel Spreadsheets and Financial Analysis",
+                "ai_tools": "AI Tools",
+                "power_bi": "Power BI and Visualization Tools",
+                "erp_systems": "ERP Systems",
+                "teamwork": "Teamwork",
+                "creative_thinking": "Creative Thinking",
+                "effective_communication": "Effective Communication",
+                "intermediate": "Intermediate",
+                "expert": "Expert",
+                
+                // Courses Section
+                "accounting_finance": "Accounting and Finance",
+                "audit_risk": "Audit and Risk Management",
+                "tech_data": "Technology and Data Analysis",
+                "management_skills": "Management and Advanced Skills",
+                "course1": "Onyx Pro - Sana'a University",
+                "course2": "External Financial Reporting CAM",
+                "course3": "Accounting Fundamentals Course",
+                "course4": "Sharia Audit in Islamic Financial Institutions",
+                "course5": "Risk Management",
+                "course6": "The Art of Preparing Internal Audit Reports",
+                "course7": "Internal Audit Standards Course",
+                "course8": "International Computer Driving License",
+                "course9": "Data Analysis using Power BI and Excel",
+                "course10": "Introduction to AI Tools",
+                "course11": "Diploma in Modern Business Administration",
+                "course12": "Professional Project Management Diploma PMP",
+                "course13": "Anti-Money Laundering and Terrorist Financing Program",
+                "course14": "Currency Counterfeiting Detection and Document Forgery Skills",
+                
+                // Languages Section
+                "arabic": "Arabic",
+                "english": "English",
+                "native": "Native",
+                
+                // Interests Section
+                "reading": "Reading",
+                "reading_desc": "Reading books and articles in accounting, finance, and technology.",
+                "financial_analysis": "Financial Analysis",
+                "financial_analysis_desc": "Analyzing financial and economic data using advanced tools.",
+                "ai_research": "Artificial Intelligence",
+                "ai_research_desc": "Researching AI applications in accounting and finance.",
+                
+                // Contact Section
+                "contact_info": "Contact Information",
+                "social_media": "Social Media",
+                "download_pdf": "Download CV (PDF)",
+                "print_cv": "Print CV",
+                
+                // Sidebar
+                "quick_nav": "Quick Navigation",
+                "key_skills": "Key Skills",
+                "download_cv": "Download CV",
+                "download_text": "You can download a copy of my CV in PDF format to review at any time.",
+                
+                // Footer
+                "footer_desc": "Ambitious recent accounting graduate, enthusiastic about applying my accounting and technical skills in a professional work environment.",
+                "quick_links": "Quick Links",
+                "copyright": "2025 All Rights Reserved | Khbab Abdulatif"
+            }
+        };
 
-    // إظهار القسم المطلوب وإخفاء باقي الأقسام
-    function showSection(sectionId) {
-        // إخفاء رسالة الترحيب
-        document.getElementById('welcome').style.display = 'none';
-        
-        // إخفاء جميع الأقسام
-        const allSections = document.querySelectorAll('.section-content');
-        allSections.forEach(section => section.classList.remove('active'));
-        
-        // إظهار القسم المطلوب
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-            targetSection.classList.add('active');
-            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); // الانتقال السلس
+        // وظيفة تبديل اللغة
+        function switchLanguage(lang) {
+            // تحديث سمة dir للصفحة
+            document.body.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.documentElement.lang = lang;
+            
+            // تحديث جميع العناصر التي تحتوي على سمة data-translate
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+            
+            // تحديث حالة أزرار اللغة
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            // حفظ اللغة المفضلة
+            localStorage.setItem('preferred-language', lang);
         }
-        
-        // تحديث حالة الروابط النشطة
-        const allLinks = document.querySelectorAll('.nav-link, .sidebar-link, .footer-links a');
-        allLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + sectionId) {
-                link.classList.add('active');
-            }
-        });
-    }
 
-    // إضافة أحداث النقر لجميع روابط التنقل
-    document.querySelectorAll('.nav-link, .sidebar-link, .footer-links a').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            showSection(targetId);
-
-            // إغلاق القائمة المتنقلة إذا كانت مفتوحة (للهاتف)
+        // تهيئة اللغة عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            // التحقق من اللغة المحفوظة أو استخدام اللغة الافتراضية
+            const savedLang = localStorage.getItem('preferred-language') || 'ar';
+            switchLanguage(savedLang);
+            
+            // إضافة مستمعي الأحداث لأزرار اللغة
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    switchLanguage(lang);
+                });
+            });
+            
+            // بقية الكود للتنقل بين الأقسام
+            const menuToggle = document.querySelector('.menu-toggle');
             const navLinks = document.querySelector('.nav-links');
-            if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
+            
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            
+            // إخفاء جميع الأقسام وإظهار القسم المطلوب عند النقر على رابط
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // إخفاء رسالة الترحيب
+                    document.getElementById('welcome').style.display = 'none';
+                    
+                    // إخفاء جميع الأقسام
+                    document.querySelectorAll('.section-content').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // إظهار القسم المطلوب
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // إغلاق القائمة المتنقلة على الأجهزة المحمولة
+                    if (window.innerWidth <= 768) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+            
+            // إضافة مستمعي الأحداث للروابط السريعة في الشريط الجانبي
+            document.querySelectorAll('.toc-list a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // إخفاء رسالة الترحيب
+                    document.getElementById('welcome').style.display = 'none';
+                    
+                    // إخفاء جميع الأقسام
+                    document.querySelectorAll('.section-content').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // إظهار القسم المطلوب
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).classList.add('active');
+                });
+            });
+            
+            // تحسين وظيفة تحميل PDF
+            document.getElementById('downloadPdf').addEventListener('click', function() {
+                alert('This feature will generate and download your CV as a PDF. In a real implementation, this would connect to a backend service or use a JavaScript library like jsPDF.');
+            });
+            
+            document.getElementById('sidebarDownloadPdf').addEventListener('click', function() {
+                alert('This feature will generate and download your CV as a PDF. In a real implementation, this would connect to a backend service or use a JavaScript library like jsPDF.');
+            });
+            
+            // وظيفة الطباعة
+            document.getElementById('printCv').addEventListener('click', function() {
+                window.print();
+            });
         });
-    });
-
-    // عرض رسالة الترحيب عند فتح الصفحة
-    window.addEventListener('load', function() {
-        // إخفاء جميع الأقسام
-        const allSections = document.querySelectorAll('.section-content');
-        allSections.forEach(section => section.classList.remove('active'));
-
-        // إظهار رسالة الترحيب
-        document.getElementById('welcome').style.display = 'block';
-    });
-</script>
+    </script>
 </body>
 </html>
