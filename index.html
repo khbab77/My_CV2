@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خباب عبداللطيف - مدونة السيرة الذاتية</title>
+    <title>Khbab Abdulatif - CV Blog</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -24,6 +24,36 @@
         section { padding: 60px 0; }
         h1,h2,h3,h4 { color: var(--primary); margin-bottom: 20px; }
         p { margin-bottom: 15px; }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--primary);
+            color: white;
+            border-radius: 30px;
+            padding: 8px 15px;
+            display: flex;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .language-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 15px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .language-btn.active {
+            background: var(--secondary);
+        }
         
         /* شريط التنقل المحسن */
         nav { 
@@ -127,16 +157,15 @@
             font-size: 60px; 
             color: var(--primary); 
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        overflow: hidden; 
-                     }
+            overflow: hidden; 
+        }
     
-    
-    .author-img img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 50%;
-                     }
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
         
         .author-details h1 { 
             color: white; 
@@ -470,6 +499,11 @@
         }
         
         @media (max-width: 768px) {
+            .language-switcher {
+                top: 80px;
+                right: 10px;
+            }
+            
             .nav-links { 
                 display: none; 
                 position: absolute; 
@@ -550,9 +584,51 @@
         section {
             scroll-margin-top: 100px;
         }
+        
+        /* RTL/LTR support */
+        body[dir="rtl"] .nav-links a i,
+        body[dir="rtl"] .widget-title i,
+        body[dir="rtl"] .toc-list a i,
+        body[dir="rtl"] .footer-links a i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+        
+        body[dir="ltr"] .nav-links a i,
+        body[dir="ltr"] .widget-title i,
+        body[dir="ltr"] .toc-list a i,
+        body[dir="ltr"] .footer-links a i {
+            margin-right: 8px;
+            margin-left: 0;
+        }
+        
+        body[dir="ltr"] .logo i {
+            margin-right: 10px;
+            margin-left: 0;
+        }
+        
+        body[dir="ltr"] .nav-links li {
+            margin-right: 20px;
+            margin-left: 0;
+        }
+        
+        body[dir="ltr"] .data-table th, 
+        body[dir="ltr"] .data-table td {
+            text-align: left;
+        }
+        
+        body[dir="ltr"] .tag {
+            margin-right: 5px;
+            margin-left: 0;
+        }
     </style>
 </head>
-<body>
+<body dir="rtl">
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="language-btn active" data-lang="ar">العربية</button>
+        <button class="language-btn" data-lang="en">English</button>
+    </div>
     <!-- شريط التنقل -->
     <nav>
         <div class="container nav-container">
